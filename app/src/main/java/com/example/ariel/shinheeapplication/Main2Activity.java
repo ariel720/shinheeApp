@@ -67,8 +67,6 @@ public class Main2Activity extends AppCompatActivity {
         }
     }
 
-
-
     private void doLogin(){
         mAuth.signInWithEmailAndPassword("ariel720@naver.com", "ariel720")
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
