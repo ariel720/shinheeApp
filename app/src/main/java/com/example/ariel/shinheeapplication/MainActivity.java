@@ -2,6 +2,8 @@ package com.example.ariel.shinheeapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -12,34 +14,18 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference mConditionRef = mDatabase.child("Restaurant").child("aaa");
-    TextView tv_main;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tv_main = (TextView) findViewById(R.id.tv_main);
+        RecyclerView rv_main= (RecyclerView) findViewById(R.id.rv_main);
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
+        MyAdapter adapter = new MyAdapter();
+
+        rv_main.setAdapter(adapter);
+        rv_main.setLayoutManager(manager);
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        mConditionRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String name = dataSnapshot.getValue(String.class);
-                tv_main.setText(name);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 }
