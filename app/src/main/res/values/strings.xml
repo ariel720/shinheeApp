@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ShinheeApplication</string>
+    <string name="facebook_app_id">804263049723827</string>
+    <string name="fb_login_protocol_scheme">fb804263049723827</string>
 </resources>
